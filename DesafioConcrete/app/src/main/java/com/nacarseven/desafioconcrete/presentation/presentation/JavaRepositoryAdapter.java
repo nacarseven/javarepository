@@ -1,13 +1,15 @@
 package com.nacarseven.desafioconcrete.presentation.presentation;
 
-import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.nacarseven.desafioconcrete.R;
 import com.nacarseven.desafioconcrete.presentation.data.entities.Repository;
 
@@ -21,7 +23,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Elaine on 11/10/2017.
  */
 
-public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     //region CONSTANTS
     private final int VIEW_TYPE_LOADING = 0, VIEW_TYPE_ITEM = 1;
@@ -120,7 +122,29 @@ public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 //        }
 
         private void bind(final Repository repository) {
-           tvwRepName.setText(repository.getName());
+            tvwRepName.setText(repository.getName());
+            tvwRepDescription.setText(repository.getDescription());
+            tvwAuthorUserName.setText(repository.getAuthor().getLogin());
+            tvwAuthorFullName.setText(String.format("%s %s", repository.getAuthor().getName(), repository.getAuthor().getFullName()));
+
+            Glide.with(itemView.getContext())
+                    .load(repository.getAuthor().getImageUrl())
+                    .asBitmap()
+                    .placeholder(R.drawable.img_sil)
+                    .error(R.drawable.img_sil)
+                    .listener(new RequestListener<String, Bitmap>() {
+                        @Override
+                        public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
+                            civAuthorImage.setImageResource(R.drawable.img_sil);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Bitmap resource, String model, Target<Bitmap> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                            civAuthorImage.setImageBitmap(resource);
+                            return false;
+                        }
+                    }).into(civAuthorImage);
 
         }
 

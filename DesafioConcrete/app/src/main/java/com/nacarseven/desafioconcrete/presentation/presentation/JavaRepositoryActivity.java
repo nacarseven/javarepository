@@ -1,7 +1,9 @@
 package com.nacarseven.desafioconcrete.presentation.presentation;
 
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -37,10 +39,9 @@ public class JavaRepositoryActivity extends AppCompatActivity implements JavaRep
         setContentView(R.layout.activity_java_repository);
         ButterKnife.bind(this);
 
+        setupList();
         presenter = new JavaRepositoryPresenter(this);
         presenter.getRepositories(false);
-        setupList();
-
     }
 
     @Override
@@ -90,6 +91,7 @@ public class JavaRepositoryActivity extends AppCompatActivity implements JavaRep
         });
 
         rcvItems.setLayoutManager(new LinearLayoutManager(this));
+        rcvItems.addItemDecoration(new DividerItemDecoration(this, 1));
         rcvItems.setAdapter(adapter);
 
         rcvItems.addOnScrollListener(new RecyclerView.OnScrollListener() {

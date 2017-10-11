@@ -30,19 +30,18 @@ public class JavaRepositoryPresenter implements BasePresenter {
     public void getRepositories(final boolean nextPage) {
         if (nextPage) {
             currentPage++;
+            view.showPagingLoading(true);
         } else {
             currentPage = 1;
             noMoreItems = false;
+            view.showLoading(true);
         }
 
-        view.showPagingLoading(true);
         interactor.getRepositories(currentPage)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleSubscriber<List<Repository>>() {
                     @Override
                     public void onSuccess(List<Repository> value) {
-                        view.showPagingLoading(false);
-
                         if (view == null) return;
 
                         hideLoading(nextPage);
@@ -65,7 +64,8 @@ public class JavaRepositoryPresenter implements BasePresenter {
 
                     @Override
                     public void onError(Throwable error) {
-                        view.showPagingLoading(false);
+                        if (view == null) return;
+                        hideLoading(nextPage);
                         view.showMessageError();
                     }
                 });
