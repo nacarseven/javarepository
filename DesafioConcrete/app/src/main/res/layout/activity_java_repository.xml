@@ -6,6 +6,33 @@
     android:layout_height="match_parent"
     tools:context="com.nacarseven.desafioconcrete.presentation.presentation.JavaRepositoryActivity">
 
+    <TextView
+        android:id="@+id/activity_java_repository_tvw_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/no_data"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_java_repository_rcv_items" />
+
+    <ProgressBar
+        android:id="@+id/activity_java_repository_pgb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_java_repository_rcv_items" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/activity_java_repository_rcv_items"
         android:layout_width="0dp"
@@ -15,8 +42,11 @@
         android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 </android.support.constraint.ConstraintLayout>

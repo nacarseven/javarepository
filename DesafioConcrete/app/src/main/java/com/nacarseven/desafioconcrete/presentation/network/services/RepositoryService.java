@@ -1,8 +1,9 @@
 package com.nacarseven.desafioconcrete.presentation.network.services;
 
-import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 import rx.Single;
 
 /**
@@ -11,7 +12,13 @@ import rx.Single;
 
 public interface RepositoryService {
 
-    @GET("/orgs/octokit/repos")
-    Single<JsonArray> getRepositories();
+    @GET("search/repositories")
+    Single<JsonObject> getRepositories(@Query("q") String language,
+                                       @Query("sort") String stars,
+                                       @Query("page") int page);
+
+
+//    GET /repos/:owner/:repo/pulls
+//    https://api.github.com/repos/torvalds/linux/pulls
 
 }
