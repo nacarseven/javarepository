@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nacarseven.desafioconcrete.R;
 import com.nacarseven.desafioconcrete.presentation.data.entities.Repository;
@@ -18,9 +19,9 @@ import butterknife.ButterKnife;
 
 public class JavaRepositoryActivity extends AppCompatActivity implements JavaRepositoryView {
 
-
     //region FIELDS
     private boolean pagingLoading;
+    private JavaRepositoryAdapter adapter;
     private JavaRepositoryPresenter presenter;
 
     @BindView(R.id.activity_java_repository_rcv_items)
@@ -56,50 +57,40 @@ public class JavaRepositoryActivity extends AppCompatActivity implements JavaRep
             rcvItems.post(new Runnable() {
                 @Override
                 public void run() {
-//                    adapter.showLoading();
+                    adapter.showLoading();
                 }
             });
         } else {
-//            adapter.hideLoading();
+            adapter.hideLoading();
         }
     }
 
     @Override
     public void showMessageError() {
-
+        Toast.makeText(this, "Erro ao consultar os dados", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showTextNoData(boolean show) {
-       tvwNoData.setVisibility(show ? View.VISIBLE : View.GONE);
+        tvwNoData.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
     @Override
     public void loadRepositories(List<Repository> repositories) {
-
+        adapter.setRepositories(repositories);
     }
 
     //region PRIVATE METHODS
     private void setupList() {
-//        adapter = new RadarSchoolAdapter(new RadarSchoolAdapter.Listener() {
-//            @Override
-//            public void onAwareAction(int position, RadarGeneric generic) {
-//                presenter.updateAwareStatus(position, generic);
-//            }
-//
-//            @Override
-//            public void onChatAction() {
-//
-//            }
-//
-//            @Override
-//            public void onSeeMooreAction(String type, int genericId, int planningId, Year year) {
-//                presenter.openDetail(type, genericId, planningId, getContext(), year);
-//            }
-//        });
+        adapter = new JavaRepositoryAdapter(new JavaRepositoryAdapter.Listener() {
+            @Override
+            public void onClickItem() {
+
+            }
+        });
 
         rcvItems.setLayoutManager(new LinearLayoutManager(this));
-//        rcvItems.setAdapter(adapter);
+        rcvItems.setAdapter(adapter);
 
         rcvItems.addOnScrollListener(new RecyclerView.OnScrollListener() {
             private int visibleThreshold = 5;

@@ -27,10 +27,10 @@ public class JavaRepositoryPresenter implements BasePresenter {
         interactor = new JavaRepositoryInteractor();
     }
 
-    public void getRepositories(final boolean nextPage){
-        if(nextPage){
+    public void getRepositories(final boolean nextPage) {
+        if (nextPage) {
             currentPage++;
-        } else{
+        } else {
             currentPage = 1;
             noMoreItems = false;
         }
@@ -73,7 +73,7 @@ public class JavaRepositoryPresenter implements BasePresenter {
 
     @Override
     public void detachView() {
-        
+
     }
 
     private void hideLoading(boolean isPaging) {
