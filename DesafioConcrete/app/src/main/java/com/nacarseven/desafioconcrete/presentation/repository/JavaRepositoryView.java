@@ -1,6 +1,7 @@
-package com.nacarseven.desafioconcrete.presentation.presentation.repository;
+package com.nacarseven.desafioconcrete.presentation.repository;
 
-import com.nacarseven.desafioconcrete.presentation.data.entities.Repository;
+import com.nacarseven.desafioconcrete.data.entities.PullRequest;
+import com.nacarseven.desafioconcrete.data.entities.Repository;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface JavaRepositoryView {
     void showTextNoData(boolean show);
 
     void loadRepositories(List<Repository> repositories);
+
+    void loadPullRequest(String repositoryName, List<PullRequest> pullRequests);
 }

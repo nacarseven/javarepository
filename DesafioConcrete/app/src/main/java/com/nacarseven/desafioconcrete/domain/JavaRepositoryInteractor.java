@@ -1,4 +1,4 @@
-package com.nacarseven.desafioconcrete.presentation.domain;
+package com.nacarseven.desafioconcrete.domain;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,12 +9,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nacarseven.desafioconcrete.BuildConfig;
-import com.nacarseven.desafioconcrete.presentation.common.helpers.DateFormatter;
-import com.nacarseven.desafioconcrete.presentation.data.entities.Author;
-import com.nacarseven.desafioconcrete.presentation.data.entities.PullRequest;
-import com.nacarseven.desafioconcrete.presentation.data.entities.Repository;
-import com.nacarseven.desafioconcrete.presentation.network.ServiceGenerator;
-import com.nacarseven.desafioconcrete.presentation.network.services.RepositoryService;
+import com.nacarseven.desafioconcrete.common.helpers.DateFormatter;
+import com.nacarseven.desafioconcrete.data.entities.Author;
+import com.nacarseven.desafioconcrete.data.entities.PullRequest;
+import com.nacarseven.desafioconcrete.data.entities.Repository;
+import com.nacarseven.desafioconcrete.network.ServiceGenerator;
+import com.nacarseven.desafioconcrete.network.services.RepositoryService;
+
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

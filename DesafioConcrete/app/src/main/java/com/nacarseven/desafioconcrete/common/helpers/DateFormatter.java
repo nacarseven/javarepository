@@ -1,10 +1,10 @@
-package com.nacarseven.desafioconcrete.presentation.common.helpers;
+package com.nacarseven.desafioconcrete.common.helpers;
 
 import android.content.Context;
 import android.support.annotation.IntDef;
 
 import com.nacarseven.desafioconcrete.R;
-import com.nacarseven.desafioconcrete.presentation.RepositoryApplication;
+import com.nacarseven.desafioconcrete.RepositoryApplication;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

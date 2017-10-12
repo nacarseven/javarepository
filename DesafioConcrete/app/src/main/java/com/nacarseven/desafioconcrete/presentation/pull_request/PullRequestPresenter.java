@@ -1,11 +1,7 @@
-package com.nacarseven.desafioconcrete.presentation.presentation.pull_request;
+package com.nacarseven.desafioconcrete.presentation.pull_request;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-
-import com.nacarseven.desafioconcrete.presentation.data.entities.PullRequest;
-import com.nacarseven.desafioconcrete.presentation.presenters.BasePresenter;
+import com.nacarseven.desafioconcrete.data.entities.PullRequest;
+import com.nacarseven.desafioconcrete.presenters.BasePresenter;
 
 import java.util.List;
 
@@ -16,6 +12,7 @@ import java.util.List;
 public class PullRequestPresenter implements BasePresenter {
 
     //region FIELDS
+    private String repositoryName;
     private List<PullRequest> pullRequests;
     //endregion
 
@@ -38,9 +35,12 @@ public class PullRequestPresenter implements BasePresenter {
         return pullRequests;
     }
 
-    public void openLinkUrl(String htmlUrl, Context context){
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(htmlUrl));
-        context.startActivity(browserIntent);
+    public String getRepositoryName() {
+        return repositoryName;
+    }
+
+    public void setRepositoryName(String repositoryName) {
+        this.repositoryName = repositoryName;
     }
 
     //endregion

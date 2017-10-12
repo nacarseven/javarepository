@@ -1,4 +1,4 @@
-package com.nacarseven.desafioconcrete.presentation;
+package com.nacarseven.desafioconcrete;
 
 import android.app.Application;
 import android.content.Context;

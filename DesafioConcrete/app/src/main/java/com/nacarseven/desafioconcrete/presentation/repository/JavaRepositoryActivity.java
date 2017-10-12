@@ -1,5 +1,6 @@
-package com.nacarseven.desafioconcrete.presentation.presentation.repository;
+package com.nacarseven.desafioconcrete.presentation.repository;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nacarseven.desafioconcrete.R;
-import com.nacarseven.desafioconcrete.presentation.data.entities.Repository;
+import com.nacarseven.desafioconcrete.data.entities.PullRequest;
+import com.nacarseven.desafioconcrete.data.entities.Repository;
+import com.nacarseven.desafioconcrete.presentation.pull_request.PullRequestActivity;
+
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -76,7 +82,7 @@ public class JavaRepositoryActivity extends AppCompatActivity implements JavaRep
 
     @Override
     public void showMessageError() {
-        Toast.makeText(this, "Erro ao consultar os dados", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, this.getString(R.string.error), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -89,6 +95,18 @@ public class JavaRepositoryActivity extends AppCompatActivity implements JavaRep
         adapter.setRepositories(repositories);
     }
 
+    @Override
+    public void loadPullRequest(String repositoryName, List<PullRequest> pullRequests) {
+        if (pullRequests.size() != 0) {
+            Intent intent = new Intent(this, PullRequestActivity.class);
+            intent.putExtra("pulls", Parcels.wrap(pullRequests));
+            intent.putExtra("repositoryName", repositoryName);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, this.getString(R.string.there_are_no_prs), Toast.LENGTH_LONG).show();
+        }
+    }
+
     //endregion
 
     //region PRIVATE METHODS
@@ -96,7 +114,7 @@ public class JavaRepositoryActivity extends AppCompatActivity implements JavaRep
         adapter = new JavaRepositoryAdapter(new JavaRepositoryAdapter.Listener() {
             @Override
             public void onClickItem(String author, String repository) {
-                presenter.getPullsRepository(author, repository, getBaseContext());
+                presenter.getPullsRepository(author, repository);
 
             }
         });

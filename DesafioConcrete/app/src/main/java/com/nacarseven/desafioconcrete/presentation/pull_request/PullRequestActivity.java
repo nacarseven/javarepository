@@ -1,5 +1,7 @@
-package com.nacarseven.desafioconcrete.presentation.presentation.pull_request;
+package com.nacarseven.desafioconcrete.presentation.pull_request;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,7 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nacarseven.desafioconcrete.R;
-import com.nacarseven.desafioconcrete.presentation.data.entities.PullRequest;
+import com.nacarseven.desafioconcrete.data.entities.PullRequest;
 
 import org.parceler.Parcels;
 
@@ -46,7 +48,9 @@ public class PullRequestActivity extends AppCompatActivity {
         presenter = new PullRequestPresenter();
 
         List<PullRequest> pulls = Parcels.unwrap(getIntent().getParcelableExtra("pulls"));
+        String repName = getIntent().getExtras().getString("repositoryName");
         presenter.setPullRequests(pulls);
+        presenter.setRepositoryName(repName);
 
         init();
 
@@ -65,6 +69,11 @@ public class PullRequestActivity extends AppCompatActivity {
     //region PRIVATE METHODS
 
     private void init() {
+        if (getSupportActionBar() != null &&
+                (presenter.getRepositoryName() != null && !presenter.getRepositoryName().isEmpty())) {
+            getSupportActionBar().setTitle(presenter.getRepositoryName());
+        }
+
         rcvItems.setLayoutManager(new LinearLayoutManager(this));
 
         if (presenter.getPullRequests() != null && presenter.getPullRequests().size() != 0) {
@@ -78,7 +87,8 @@ public class PullRequestActivity extends AppCompatActivity {
         PullRequestAdapter adapter = new PullRequestAdapter(presenter.getPullRequests(), new PullRequestAdapter.Listener() {
             @Override
             public void onClickItem(String htmlUrl) {
-               presenter.openLinkUrl(htmlUrl, getBaseContext());
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(htmlUrl));
+                startActivity(browserIntent);
             }
         });
         rcvItems.setAdapter(adapter);

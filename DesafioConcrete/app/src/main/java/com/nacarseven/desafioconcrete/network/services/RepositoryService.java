@@ -1,4 +1,4 @@
-package com.nacarseven.desafioconcrete.presentation.network.services;
+package com.nacarseven.desafioconcrete.network.services;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -22,9 +22,5 @@ public interface RepositoryService {
     @GET("repos/{owner}/{repo}/pulls")
     Single<JsonArray> getPulls(@Path("owner") String author,
                                @Path("repo") String repoName);
-
-
-//    GET /repos/:owner/:repo/pulls
-//    https://api.github.com/repos/torvalds/linux/pulls
 
 }

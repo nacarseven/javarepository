@@ -7,4 +7,6 @@
     <string name="no_name">No name</string>
     <string name="no_description">No description</string>
     <string name="date_format">dd/MM/yyyy</string>
+    <string name="error">Fail to load data</string>
+    <string name="there_are_no_prs">There are no PR</string>
 </resources>

@@ -1,17 +1,9 @@
-package com.nacarseven.desafioconcrete.presentation.presentation.repository;
+package com.nacarseven.desafioconcrete.presentation.repository;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Parcel;
-import android.support.v7.app.AppCompatActivity;
-
-import com.nacarseven.desafioconcrete.presentation.data.entities.PullRequest;
-import com.nacarseven.desafioconcrete.presentation.data.entities.Repository;
-import com.nacarseven.desafioconcrete.presentation.domain.JavaRepositoryInteractor;
-import com.nacarseven.desafioconcrete.presentation.presentation.pull_request.PullRequestActivity;
-import com.nacarseven.desafioconcrete.presentation.presenters.BasePresenter;
-
-import org.parceler.Parcels;
+import com.nacarseven.desafioconcrete.data.entities.PullRequest;
+import com.nacarseven.desafioconcrete.data.entities.Repository;
+import com.nacarseven.desafioconcrete.domain.JavaRepositoryInteractor;
+import com.nacarseven.desafioconcrete.presenters.BasePresenter;
 
 import java.util.List;
 
@@ -92,7 +84,7 @@ public class JavaRepositoryPresenter implements BasePresenter {
                 });
     }
 
-    public void getPullsRepository(final String author, final String repository, final Context context) {
+    public void getPullsRepository(final String author, final String repository) {
         view.showLoading(true);
         subscription = interactor.getPulls(author, repository)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -100,14 +92,7 @@ public class JavaRepositoryPresenter implements BasePresenter {
                     @Override
                     public void onSuccess(List<PullRequest> value) {
                         view.showLoading(false);
-
-                        if (value.size() != 0) {
-                            Intent intent = new Intent(context, PullRequestActivity.class);
-                            intent.putExtra("pulls", Parcels.wrap(value));
-                            context.startActivity(intent);
-
-                        }
-
+                        view.loadPullRequest(repository, value);
                     }
 
                     @Override

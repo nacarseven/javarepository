@@ -7,4 +7,6 @@
     <string name="no_name">Nenhum nome</string>
     <string name="no_description">Nenhuma descrição</string>
     <string name="date_format">MM/dd/yyyy</string>
+    <string name="error">"Erro ao consultar os dados"</string>
+    <string name="there_are_no_prs">Não existem PRs para esse repositório</string>
 </resources>

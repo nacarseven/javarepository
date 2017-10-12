@@ -1,4 +1,4 @@
-package com.nacarseven.desafioconcrete.presentation.network;
+package com.nacarseven.desafioconcrete.network;
 
 import android.text.TextUtils;
 

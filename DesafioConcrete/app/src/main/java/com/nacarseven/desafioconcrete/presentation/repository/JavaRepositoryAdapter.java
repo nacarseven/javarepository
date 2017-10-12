@@ -1,4 +1,4 @@
-package com.nacarseven.desafioconcrete.presentation.presentation.repository;
+package com.nacarseven.desafioconcrete.presentation.repository;
 
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.nacarseven.desafioconcrete.R;
-import com.nacarseven.desafioconcrete.presentation.data.entities.Repository;
+import com.nacarseven.desafioconcrete.data.entities.Repository;
 
 import java.util.List;
 
@@ -140,8 +140,8 @@ public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
 
         private void bind(final Repository repository) {
-            tvwRepName.setText(repository.getName().isEmpty() ? itemView.getResources().getString(R.string.no_name) : repository.getName());
-            tvwRepDescription.setText(repository.getDescription().isEmpty() ? itemView.getResources().getString(R.string.no_description) : repository.getDescription());
+            tvwRepName.setText(repository.getName() == null || repository.getName().isEmpty() ? itemView.getResources().getString(R.string.no_name) : repository.getName());
+            tvwRepDescription.setText(repository.getDescription() == null || repository.getDescription().isEmpty() ? itemView.getResources().getString(R.string.no_description) : repository.getDescription());
             tvwAuthorUserName.setText(repository.getAuthor().getLogin().isEmpty() ? "" : repository.getAuthor().getLogin());
             tvwAuthorFullName.setText(String.format("%s %s", repository.getAuthor().getName(), repository.getAuthor().getFullName()));
             tvwQtyFork.setText(String.valueOf(repository.getForks()));

@@ -1,4 +1,4 @@
-package com.nacarseven.desafioconcrete.presentation.presentation.pull_request;
+package com.nacarseven.desafioconcrete.presentation.pull_request;
 
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +11,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.nacarseven.desafioconcrete.R;
-import com.nacarseven.desafioconcrete.presentation.common.helpers.DateFormatter;
-import com.nacarseven.desafioconcrete.presentation.data.entities.PullRequest;
+import com.nacarseven.desafioconcrete.common.helpers.DateFormatter;
+import com.nacarseven.desafioconcrete.data.entities.PullRequest;
 
 import java.util.List;
 

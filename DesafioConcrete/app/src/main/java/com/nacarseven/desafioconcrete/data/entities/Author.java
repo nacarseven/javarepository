@@ -1,4 +1,4 @@
-package com.nacarseven.desafioconcrete.presentation.data.entities;
+package com.nacarseven.desafioconcrete.data.entities;
 
 import com.google.gson.annotations.SerializedName;
 
