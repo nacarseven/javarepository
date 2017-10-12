@@ -1,9 +1,6 @@
 package com.nacarseven.desafioconcrete.presentation.presentation.pull_request;
 
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,10 +10,8 @@ import android.widget.TextView;
 
 import com.nacarseven.desafioconcrete.R;
 import com.nacarseven.desafioconcrete.presentation.data.entities.PullRequest;
-import com.nacarseven.desafioconcrete.presentation.presentation.repository.JavaRepositoryAdapter;
 
 import org.parceler.Parcels;
-import org.w3c.dom.ProcessingInstruction;
 
 import java.util.List;
 
@@ -55,6 +50,12 @@ public class PullRequestActivity extends AppCompatActivity {
 
         init();
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.detachView();
     }
 
     //endregion

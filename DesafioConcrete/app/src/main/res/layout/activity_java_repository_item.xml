@@ -64,12 +64,17 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:textColor="@color/orange"
-        android:textSize="18sp"
+        android:maxLength="8"
+        android:ems="4"
+        android:lines="1"
+        android:ellipsize="end"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/activity_java_repository_item_img_fork"
         app:layout_constraintLeft_toRightOf="@+id/activity_java_repository_item_img_fork"
         app:layout_constraintTop_toTopOf="@+id/activity_java_repository_item_img_fork"
-        tools:text="645" />
+        tools:text="987456321"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/activity_java_repository_item_img_star"
@@ -84,17 +89,20 @@
 
     <TextView
         android:id="@+id/activity_java_repository_item_tvw_qty_star"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:textColor="@color/orange"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
+        android:maxLength="8"
+        android:ems="4"
         app:layout_constraintBottom_toBottomOf="@+id/activity_java_repository_item_img_star"
         app:layout_constraintLeft_toRightOf="@+id/activity_java_repository_item_img_star"
         app:layout_constraintTop_toTopOf="@+id/activity_java_repository_item_img_star"
-        tools:text="545" />
+        tools:text="54587915648787"
+        app:layout_constraintVertical_bias="0.0" />
 
     <RelativeLayout
         android:id="@+id/activity_java_repository_item_rel_author"

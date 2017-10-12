@@ -1,17 +1,24 @@
 package com.nacarseven.desafioconcrete.presentation.domain;
 
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.nacarseven.desafioconcrete.BuildConfig;
+import com.nacarseven.desafioconcrete.presentation.common.helpers.DateFormatter;
 import com.nacarseven.desafioconcrete.presentation.data.entities.Author;
 import com.nacarseven.desafioconcrete.presentation.data.entities.PullRequest;
 import com.nacarseven.desafioconcrete.presentation.data.entities.Repository;
 import com.nacarseven.desafioconcrete.presentation.network.ServiceGenerator;
 import com.nacarseven.desafioconcrete.presentation.network.services.RepositoryService;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import rx.Single;
@@ -68,24 +75,37 @@ public class JavaRepositoryInteractor {
                 .map(new Func1<JsonArray, List<PullRequest>>() {
                     @Override
                     public List<PullRequest> call(JsonArray jsonArray) {
-
                         List<PullRequest> prList = new ArrayList<>();
-
-//                        2017-10-06T12:08:45Z
-
-//                        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").create();
+                        Gson defaultGson = getDefaultGson();
+                        DateFormatter dateFormatter = new DateFormatter();
 
                         for (JsonElement json : jsonArray) {
-//                            PullRequest pr = gson.fromJson(json, PullRequest.class);
-                            PullRequest pr = new GsonBuilder().create().fromJson(json, PullRequest.class);
+                            JsonObject jsonObject = json.getAsJsonObject();
+                            PullRequest pr = defaultGson.fromJson(jsonObject, PullRequest.class);
+                            pr.setDate(dateFormatter.parseToCalendar(jsonObject.get("created_at").getAsString(),
+                                    DateFormatter.DATE_FORMAT_API_OUTPUT, true));
                             prList.add(pr);
-
                         }
 
                         return prList;
                     }
                 });
+    }
 
+    //endregion
+
+    //region PRIVATE METHODS
+
+    private Gson getDefaultGson() {
+        return new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+                .registerTypeAdapter(Calendar.class, new JsonDeserializer<Calendar>() {
+                    @Override
+                    public Calendar deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                        return new DateFormatter().parseToCalendar(json.getAsString(), DateFormatter.DATE_FORMAT_API_OUTPUT, true);
+                    }
+                })
+                .create();
     }
 
     //endregion

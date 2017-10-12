@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.nacarseven.desafioconcrete.R;
+import com.nacarseven.desafioconcrete.presentation.common.helpers.DateFormatter;
 import com.nacarseven.desafioconcrete.presentation.data.entities.PullRequest;
 
 import java.util.List;
@@ -29,12 +30,14 @@ public class PullRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     //region FIELDS
     private List<PullRequest> pulls;
     private Listener listener;
+    private DateFormatter dateFormatter;
     //endregion
 
     //region CONSTRUCTOR
     public PullRequestAdapter(List<PullRequest> pulls, Listener listener) {
         this.pulls = pulls;
         this.listener = listener;
+        dateFormatter = new DateFormatter();
     }
 
     //endregion
@@ -76,6 +79,8 @@ public class PullRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         CircleImageView civAuthor;
         @BindView(R.id.activity_pull_request_item_tvw_author_username)
         TextView tvwAuthorUserName;
+        @BindView(R.id.activity_pull_request_item_tvw_date)
+        TextView tvwDate;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -90,6 +95,8 @@ public class PullRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         private void bind(final PullRequest pr) {
 
+            tvwDate.setText(pr.getDate() == null ? itemView.getResources().getString(R.string.no_data) :
+                    dateFormatter.parseToString(pr.getDate().getTime(), DateFormatter.DATE_FORMAT_DATE));
             tvwPrTitle.setText(pr.getTitle().isEmpty() ? itemView.getResources().getString(R.string.no_title) : pr.getTitle());
             tvwPrBody.setText(pr.getBody().isEmpty() ? itemView.getResources().getString(R.string.no_body) : pr.getBody());
             tvwAuthorUserName.setText(pr.getAuthor().getLogin().isEmpty() ? "" : pr.getAuthor().getLogin());

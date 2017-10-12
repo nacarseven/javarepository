@@ -14,14 +14,13 @@ import java.util.Calendar;
 public class PullRequest {
 
     //region FIELDS
-     String title;
-     String body;
+    String title;
+    String body;
     @SerializedName("html_url")
-     String htmlUrl;
-//    @SerializedName("created_at")
-//    private Calendar date;
+    String htmlUrl;
+    private Calendar date;
     @SerializedName("user")
-     Author author;
+    Author author;
 
     //endregion
 
@@ -51,13 +50,13 @@ public class PullRequest {
         this.htmlUrl = htmlUrl;
     }
 
-    //    public Calendar getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(Calendar date) {
-//        this.date = date;
-//    }
+    public Calendar getDate() {
+        return date;
+    }
+
+    public void setDate(Calendar date) {
+        this.date = date;
+    }
 
     public Author getAuthor() {
         return author;

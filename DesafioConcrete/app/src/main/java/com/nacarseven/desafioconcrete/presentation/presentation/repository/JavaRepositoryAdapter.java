@@ -140,9 +140,9 @@ public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
 
         private void bind(final Repository repository) {
-            tvwRepName.setText(repository.getName());
-            tvwRepDescription.setText(repository.getDescription());
-            tvwAuthorUserName.setText(repository.getAuthor().getLogin());
+            tvwRepName.setText(repository.getName().isEmpty() ? itemView.getResources().getString(R.string.no_name) : repository.getName());
+            tvwRepDescription.setText(repository.getDescription().isEmpty() ? itemView.getResources().getString(R.string.no_description) : repository.getDescription());
+            tvwAuthorUserName.setText(repository.getAuthor().getLogin().isEmpty() ? "" : repository.getAuthor().getLogin());
             tvwAuthorFullName.setText(String.format("%s %s", repository.getAuthor().getName(), repository.getAuthor().getFullName()));
             tvwQtyFork.setText(String.valueOf(repository.getForks()));
             tvwQtyStar.setText(String.valueOf(repository.getStars()));

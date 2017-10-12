@@ -1,6 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Github JavaRep</string>
-    <string name="no_data">No data</string>
-    <string name="no_body">No body</string>
-    <string name="no_title">No title</string>
+    <string name="no_data">Nenhum dado</string>
+    <string name="no_body">Nenhum dado</string>
+    <string name="no_title">Nenhum título</string>
+    <string name="no_name">Nenhum nome</string>
+    <string name="no_description">Nenhuma descrição</string>
+    <string name="date_format">MM/dd/yyyy</string>
 </resources>
