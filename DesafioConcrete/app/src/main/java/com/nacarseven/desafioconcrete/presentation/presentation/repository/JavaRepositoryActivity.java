@@ -1,9 +1,7 @@
-package com.nacarseven.desafioconcrete.presentation.presentation;
+package com.nacarseven.desafioconcrete.presentation.presentation.repository;
 
 import android.os.Bundle;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -85,13 +83,13 @@ public class JavaRepositoryActivity extends AppCompatActivity implements JavaRep
     private void setupList() {
         adapter = new JavaRepositoryAdapter(new JavaRepositoryAdapter.Listener() {
             @Override
-            public void onClickItem() {
+            public void onClickItem(String author, String repository) {
+                presenter.getPullsRepository(author, repository, getBaseContext());
 
             }
         });
 
         rcvItems.setLayoutManager(new LinearLayoutManager(this));
-        rcvItems.addItemDecoration(new DividerItemDecoration(this, 1));
         rcvItems.setAdapter(adapter);
 
         rcvItems.addOnScrollListener(new RecyclerView.OnScrollListener() {

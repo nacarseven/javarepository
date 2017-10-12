@@ -2,17 +2,20 @@ package com.nacarseven.desafioconcrete.presentation.data.entities;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 /**
  * Created by nacarseven on 10/10/17.
  */
 
+@Parcel
 public class Author {
 
-    private String login;
-    private String name;
-    private String fullName;
+    String login;
+    String name;
+    String fullName;
     @SerializedName("avatar_url")
-    private String imageUrl;
+    String imageUrl;
 
     public String getLogin() {
         return login;

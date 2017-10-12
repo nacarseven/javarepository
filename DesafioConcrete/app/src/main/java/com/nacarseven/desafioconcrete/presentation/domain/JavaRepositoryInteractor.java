@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.nacarseven.desafioconcrete.BuildConfig;
 import com.nacarseven.desafioconcrete.presentation.data.entities.Author;
+import com.nacarseven.desafioconcrete.presentation.data.entities.PullRequest;
 import com.nacarseven.desafioconcrete.presentation.data.entities.Repository;
 import com.nacarseven.desafioconcrete.presentation.network.ServiceGenerator;
 import com.nacarseven.desafioconcrete.presentation.network.services.RepositoryService;
@@ -50,6 +51,31 @@ public class JavaRepositoryInteractor {
                         return list;
                     }
                 });
+    }
+
+    public Single<List<PullRequest>> getPulls(String author, String repository) {
+        return service.getPulls(author, repository)
+                .map(new Func1<JsonArray, List<PullRequest>>() {
+                    @Override
+                    public List<PullRequest> call(JsonArray jsonArray) {
+
+                        List<PullRequest> prList = new ArrayList<>();
+
+//                        2017-10-06T12:08:45Z
+
+//                        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").create();
+
+                        for (JsonElement json : jsonArray) {
+//                            PullRequest pr = gson.fromJson(json, PullRequest.class);
+                            PullRequest pr = new GsonBuilder().create().fromJson(json, PullRequest.class);
+                            prList.add(pr);
+
+                        }
+
+                        return prList;
+                    }
+                });
+
     }
 
 }

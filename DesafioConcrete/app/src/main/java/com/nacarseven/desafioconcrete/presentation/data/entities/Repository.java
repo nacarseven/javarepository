@@ -2,20 +2,23 @@ package com.nacarseven.desafioconcrete.presentation.data.entities;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 /**
  * Created by nacarseven on 10/10/17.
  */
 
+@Parcel
 public class Repository {
 
-    private String name;
-    private String description;
+    String name;
+    String description;
     @SerializedName("forks_count")
-    private int forks;
+    int forks;
     @SerializedName("stargazers_count")
-    private int stars;
+    int stars;
     @SerializedName("owner")
-    private Author author;
+    Author author;
 
     public String getName() {
         return name;

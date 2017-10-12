@@ -1,4 +1,4 @@
-package com.nacarseven.desafioconcrete.presentation.presentation;
+package com.nacarseven.desafioconcrete.presentation.presentation.repository;
 
 import com.nacarseven.desafioconcrete.presentation.data.entities.Repository;
 

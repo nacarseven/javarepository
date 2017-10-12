@@ -12,15 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".presentation.presentation.JavaRepositoryActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/AppTheme.Dark">
+            android:name=".presentation.presentation.repository.JavaRepositoryActivity"
+            android:theme="@style/AppTheme.Dark"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".presentation.presentation.pull_request.PullRequestActivity"
+            android:parentActivityName=".presentation.presentation.repository.JavaRepositoryActivity"
+            android:theme="@style/AppTheme.Dark"
+            android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presentation.presentation.repository.JavaRepositoryActivity" />
+        </activity>
+
     </application>
 
 </manifest>

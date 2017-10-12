@@ -1,4 +1,4 @@
-package com.nacarseven.desafioconcrete.presentation.presentation;
+package com.nacarseven.desafioconcrete.presentation.presentation.repository;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

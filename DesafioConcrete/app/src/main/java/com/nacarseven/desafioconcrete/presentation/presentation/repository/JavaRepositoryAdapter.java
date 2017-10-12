@@ -1,4 +1,4 @@
-package com.nacarseven.desafioconcrete.presentation.presentation;
+package com.nacarseven.desafioconcrete.presentation.presentation.repository;
 
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -108,6 +109,10 @@ public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         TextView tvwAuthorUserName;
         @BindView(R.id.activity_java_repository_item_tvw_author_full_name)
         TextView tvwAuthorFullName;
+        @BindView(R.id.activity_java_repository_item_tvw_qty_fork)
+        TextView tvwQtyFork;
+        @BindView(R.id.activity_java_repository_item_tvw_qty_star)
+        TextView tvwQtyStar;
 
 
         public ViewHolder(View itemView) {
@@ -115,17 +120,20 @@ public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             ButterKnife.bind(this, itemView);
         }
 
-//        @OnClick(R.id.fragment_radar_school_item_tvw_arrow_icon)
-//        void onOpenActionsClick() {
-//            openReplies = !openReplies;
-//            updateButtons();
-//        }
+        @OnClick(R.id.activity_java_repository_item_cons_root)
+        void onClickItem() {
+            Repository rep = repositories.get(getAdapterPosition());
+            if (listener != null) listener.onClickItem(rep.getAuthor().getLogin(), rep.getName());
+        }
+
 
         private void bind(final Repository repository) {
             tvwRepName.setText(repository.getName());
             tvwRepDescription.setText(repository.getDescription());
             tvwAuthorUserName.setText(repository.getAuthor().getLogin());
             tvwAuthorFullName.setText(String.format("%s %s", repository.getAuthor().getName(), repository.getAuthor().getFullName()));
+            tvwQtyFork.setText(String.valueOf(repository.getForks()));
+            tvwQtyStar.setText(String.valueOf(repository.getStars()));
 
             Glide.with(itemView.getContext())
                     .load(repository.getAuthor().getImageUrl())
@@ -154,7 +162,7 @@ public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     //region INTERFACES
     public interface Listener {
 
-        void onClickItem();
+        void onClickItem(String author, String repository);
 
     }
     //endregion

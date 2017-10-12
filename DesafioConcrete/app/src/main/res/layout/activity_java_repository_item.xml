@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_java_repository_item_cons_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -9,56 +10,106 @@
         android:id="@+id/activity_java_repository_item_tvw_repository_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:lines="1"
         android:maxLength="20"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/dark_blue"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Repository name"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintRight_toLeftOf="@+id/activity_java_repository_item_rel_author"
-        android:layout_marginRight="8dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Repository name" />
 
     <TextView
         android:id="@+id/activity_java_repository_item_tvw_repository_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
         android:ellipsize="end"
         android:lines="2"
-        android:paddingTop="5dp"
         android:paddingBottom="5dp"
+        android:paddingTop="5dp"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/activity_java_repository_item_tvw_repository_name"
-        tools:text="Here should be the description of repository, large description or small description"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/activity_java_repository_item_rel_author"
-        android:layout_marginRight="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/activity_java_repository_item_tvw_repository_name"
+        tools:text="Here should be the description of repository, large description or small description" />
+
+    <ImageView
+        android:id="@+id/activity_java_repository_item_img_fork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_fork"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_java_repository_item_tvw_repository_description" />
+
+    <TextView
+        android:id="@+id/activity_java_repository_item_tvw_qty_fork"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginStart="8dp"
+        android:textColor="@color/orange"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_java_repository_item_img_fork"
+        app:layout_constraintLeft_toRightOf="@+id/activity_java_repository_item_img_fork"
+        app:layout_constraintTop_toTopOf="@+id/activity_java_repository_item_img_fork"
+        tools:text="645" />
+
+    <ImageView
+        android:id="@+id/activity_java_repository_item_img_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_star"
+        app:layout_constraintLeft_toRightOf="@+id/activity_java_repository_item_tvw_qty_fork"
+        app:layout_constraintTop_toBottomOf="@+id/activity_java_repository_item_tvw_repository_description" />
+
+    <TextView
+        android:id="@+id/activity_java_repository_item_tvw_qty_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/orange"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_java_repository_item_img_star"
+        app:layout_constraintLeft_toRightOf="@+id/activity_java_repository_item_img_star"
+        app:layout_constraintTop_toTopOf="@+id/activity_java_repository_item_img_star"
+        tools:text="545" />
 
     <RelativeLayout
         android:id="@+id/activity_java_repository_item_rel_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="8dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/activity_java_repository_item_civ_author_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:layout_centerHorizontal="true"
             android:src="@mipmap/ic_launcher" />
 
@@ -72,10 +123,12 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:lines="1"
             android:maxLength="18"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/dark_blue"
+            android:textStyle="bold"
             tools:text="username" />
 
         <TextView
@@ -88,11 +141,29 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
             android:ellipsize="end"
             android:lines="1"
             android:maxLength="18"
+            android:textSize="13sp"
             tools:text="First Name Last Name" />
 
     </RelativeLayout>
+
+    <View
+        android:id="@+id/activity_java_repository_item_view_separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_java_repository_item_tvw_qty_star"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
