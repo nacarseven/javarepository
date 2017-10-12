@@ -13,6 +13,7 @@ import java.util.Calendar;
 @Parcel
 public class PullRequest {
 
+    //region FIELDS
      String title;
      String body;
     @SerializedName("html_url")
@@ -22,6 +23,9 @@ public class PullRequest {
     @SerializedName("user")
      Author author;
 
+    //endregion
+
+    //region PROPERTIES
 
     public String getTitle() {
         return title;
@@ -62,4 +66,6 @@ public class PullRequest {
     public void setAuthor(Author author) {
         this.author = author;
     }
+
+    //endregion
 }

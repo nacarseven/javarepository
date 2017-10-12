@@ -31,6 +31,10 @@ public class JavaRepositoryActivity extends AppCompatActivity implements JavaRep
     @BindView(R.id.activity_java_repository_tvw_no_data)
     TextView tvwNoData;
 
+    //endregion
+
+    //region LIFECYCLE
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,12 @@ public class JavaRepositoryActivity extends AppCompatActivity implements JavaRep
         presenter = new JavaRepositoryPresenter(this);
         presenter.getRepositories(false);
     }
+
+    //endregion
+
+    //region METHODS
+
+    //region PUBLIC METHODS
 
     @Override
     public void showLoading(boolean show) {
@@ -79,6 +89,8 @@ public class JavaRepositoryActivity extends AppCompatActivity implements JavaRep
         adapter.setRepositories(repositories);
     }
 
+    //endregion
+
     //region PRIVATE METHODS
     private void setupList() {
         adapter = new JavaRepositoryAdapter(new JavaRepositoryAdapter.Listener() {
@@ -107,4 +119,8 @@ public class JavaRepositoryActivity extends AppCompatActivity implements JavaRep
             }
         });
     }
+
+    //endregion
+
+    //endregion
 }

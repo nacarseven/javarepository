@@ -23,11 +23,21 @@ import rx.functions.Func1;
 
 public class JavaRepositoryInteractor {
 
+    //region FIELDS
     private RepositoryService service;
 
+    //endregion
+
+    //region CONSTRUCTOR
     public JavaRepositoryInteractor() {
         service = ServiceGenerator.createService(RepositoryService.class, BuildConfig.API_URL);
     }
+
+    //endregion
+
+    //region METHODS
+
+    //region PUBLIC METHODS
 
     public Single<List<Repository>> getRepositories(int page) {
         return service.getRepositories("Java", "stars", page)
@@ -77,5 +87,9 @@ public class JavaRepositoryInteractor {
                 });
 
     }
+
+    //endregion
+
+    //endregion
 
 }

@@ -11,6 +11,7 @@ import org.parceler.Parcel;
 @Parcel
 public class Repository {
 
+    //region FIELDS
     String name;
     String description;
     @SerializedName("forks_count")
@@ -19,6 +20,10 @@ public class Repository {
     int stars;
     @SerializedName("owner")
     Author author;
+
+    //endregion
+
+    //region PROPERTIES
 
     public String getName() {
         return name;
@@ -59,4 +64,6 @@ public class Repository {
     public void setAuthor(Author author) {
         this.author = author;
     }
+
+    //endregion
 }

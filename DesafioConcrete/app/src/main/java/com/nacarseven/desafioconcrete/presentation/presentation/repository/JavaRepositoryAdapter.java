@@ -29,13 +29,19 @@ public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     //region CONSTANTS
     private final int VIEW_TYPE_LOADING = 0, VIEW_TYPE_ITEM = 1;
 
+    //endregion
+
     //region FIELDS
     private List<Repository> repositories;
     private Listener listener;
+    //endregion
 
+    //region CONSTRUCTOR
     public JavaRepositoryAdapter(Listener listener) {
         this.listener = listener;
     }
+
+    //endregion
 
     //region PUBLIC
     public void showLoading() {
@@ -58,6 +64,8 @@ public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         notifyDataSetChanged();
     }
     //endregion
+
+    //region METHODS
 
     //region OVERRIDDEN METHODS
     @Override
@@ -95,6 +103,10 @@ public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public int getItemCount() {
         return repositories == null ? 0 : repositories.size();
     }
+
+    //endregion
+
+    //endregion
 
     //region INNER CLASS
     public class ViewHolder extends RecyclerView.ViewHolder {

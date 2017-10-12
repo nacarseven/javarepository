@@ -25,6 +25,7 @@ import rx.android.schedulers.AndroidSchedulers;
 
 public class JavaRepositoryPresenter implements BasePresenter {
 
+    //region FIELDS
     private boolean noMoreItems;
     private int currentPage = 1;
     private List<Repository> repositories;
@@ -32,11 +33,19 @@ public class JavaRepositoryPresenter implements BasePresenter {
     private Subscription subscription;
     private JavaRepositoryInteractor interactor;
 
+    //endregion
 
+    //region CONSTRUCTOR
     public JavaRepositoryPresenter(JavaRepositoryView view) {
         this.view = view;
         interactor = new JavaRepositoryInteractor();
     }
+
+    //endregion
+
+    //region METHODS
+
+    //region PUBLIC METHODS
 
     public void getRepositories(final boolean nextPage) {
         if (nextPage) {
@@ -110,12 +119,19 @@ public class JavaRepositoryPresenter implements BasePresenter {
 
     }
 
+    //endregion
+
+    //region OVERRIDE METHODS
+
     @Override
     public void detachView() {
         if (subscription != null) subscription.unsubscribe();
         view = null;
-
     }
+
+    //endregion
+
+    //region PRIVATE METHODS
 
     private void hideLoading(boolean isPaging) {
         if (isPaging) {
@@ -124,4 +140,8 @@ public class JavaRepositoryPresenter implements BasePresenter {
             view.showLoading(false);
         }
     }
+
+    //endregion
+
+    //endregion
 }

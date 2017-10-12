@@ -11,11 +11,16 @@ import org.parceler.Parcel;
 @Parcel
 public class Author {
 
+    //region FIELDS
     String login;
     String name;
     String fullName;
     @SerializedName("avatar_url")
     String imageUrl;
+
+    //endregion
+
+    //region PROPERTIES
 
     public String getLogin() {
         return login;
@@ -48,5 +53,7 @@ public class Author {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    //endregion
 
 }
