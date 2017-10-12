@@ -16,7 +16,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- * Created by Elaine on 12/10/2017.
+ * Created by nacarseven on 12/10/2017.
  */
 
 public final class DateFormatter {

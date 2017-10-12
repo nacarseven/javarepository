@@ -21,7 +21,7 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by Elaine on 11/10/2017.
+ * Created by nacarseven on 11/10/2017.
  */
 
 public class JavaRepositoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
